@@ -52,7 +52,7 @@ chrome.extension.sendMessage('hello', function(result){
 			if(msg.from_uin){
 				var el = document.createElement('div');
 				el.className = 'msgName';
-				el.innerHTML = history[i]['name']+'&nbsp;&nbsp;'+hh+':'+mm+':'+ss;
+				el.innerHTML = history[i]['name'].replace(/</g, "&lt;").replace(/>/g, "&gt;")+'&nbsp;&nbsp;'+hh+':'+mm+':'+ss;
 				document.getElementById('chatBox').appendChild(el);
 				 el = document.createElement('div');
 				document.getElementById('chatBox').appendChild(decodeMsg(msg.content, type=='friend'?msg.from_uin:msg.send_uin, type));
@@ -60,7 +60,7 @@ chrome.extension.sendMessage('hello', function(result){
 			else if(!msg.from_uin){
 				var el = document.createElement('div');
 				el.className = 'msgNameSelf';
-				el.innerHTML = history[i]['name']+'&nbsp;&nbsp;'+hh+':'+mm+':'+ss;
+				el.innerHTML = history[i]['name'].replace(/</g, "&lt;").replace(/>/g, "&gt;")+'&nbsp;&nbsp;'+hh+':'+mm+':'+ss;
 				document.getElementById('chatBox').appendChild(el);
 				el = document.createElement('div');
 				document.getElementById('chatBox').appendChild(decodeMsg(msg.content, HTML5QQ.qq, type));

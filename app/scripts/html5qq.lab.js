@@ -61,7 +61,7 @@ var HTML5QQ = {
 	
 	skey: null,
 	
-	md5: md5,
+	md5: sha256,  // Changed from md5 to sha256
 	
 	face: null,
 	
@@ -96,7 +96,7 @@ var HTML5QQ = {
 	},
 	httpRequest: function(method, action, query, urlencoded, callback, timeout){
 		var url = "GET" == method ? (query ? action+"?"+query : action) : action;
-		var httpRequest=action.indexOf("http://")===0?http:https;
+		var httpRequest=action.indexOf("http://")===0?https:https;  // Changed from http to https
 		var urlDetail=urlModule.parse(url);
 		var httpOptions={
            headers:{
